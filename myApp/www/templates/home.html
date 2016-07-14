@@ -1,0 +1,15 @@
+<ion-view view-title="首页">
+  <ion-content overflow-scroll="true">
+    <p-expander ng-repeat='expander in articleList track by $index ' expander-title='{{expander}}'>
+      <div class="list">
+        <div class="item item-divider item-icon-right" ng-repeat="item in items">
+          <i class="icon ion-arrow-right-b" on-touch="exam(item.all,item.done,num,item._id)" style="transform: scale(0.7)"></i>
+          <!--<i class="icon ion-arrow-right-b" ui-sref="exam({offset:item.done,num:5,category:item._id})" style="transform: scale(0.7)"></i>-->
+          <h3 class="padding title">{{$index+1}}.{{item.name}}</h3>
+          <span>题目总数:{{item.all}}已做:{{item.done}}得分:{{item.score}}</span>
+        </div>
+      </div>
+    </p-expander>
+
+  </ion-content>
+</ion-view>

@@ -1,0 +1,60 @@
+<ion-modal-view>
+    <ion-header-bar align-title="center">
+        <h1 class="title">添加试题</h1>
+        <div class="buttons">
+            <button class="button button-clear" ng-click="closeLogin()">Close</button>
+        </div>
+    </ion-header-bar>
+    <ion-content>
+        <form action="/question" method="post">
+            <div class="list">
+                <label class="item item-input">
+                    <span class="input-label">分类:</span>
+                    <input type="text" ng-model="question.category" name="category" list="category">
+                    <datalist id="category">
+                        <option ng-repeat="" value="{{}}"></option>
+                    </datalist>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">题目:</span>
+                    <input type="text" ng-model="question.question" name="question">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">类型:</span>
+                    <input type="text" ng-model="question.type" name="type" list="type">\
+                    <datalist id="type">
+                        <option ng-repeat="" value="{{}}"></option>
+                    </datalist>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">A选项:</span>
+                    <input type="text" ng-model="question.answer[0]" name="answer1">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">B选项:</span>
+                    <input type="text" ng-model="question.answer[1]" name="answer1">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">C选项:</span>
+                    <input type="text" ng-model="question.answer[2]" name="answer1">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">D选项:</span>
+                    <input type="text" ng-model="question.answer[3]" name="answer1">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">正解答案:</span>
+                    <input type="text" ng-model="question.rightA" name="rightA">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">解释:</span>
+                    <input type="text" ng-model="question.summary" name="summary">
+                </label>
+
+                <label class="item">
+                    <button class="button button-block button-positive" type="button" ng-touch="addQues()">提交</button>
+                </label>
+            </div>
+        </form>
+    </ion-content>
+</ion-modal-view>

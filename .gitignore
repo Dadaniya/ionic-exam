@@ -1,0 +1,5 @@
+/myApp/hooks/*
+/myApp/node_modules/*
+/myApp/platforms/*
+/myApp/plugins/*
+

@@ -1,0 +1,94 @@
+<ion-header-bar class="bar-stable" align-title="center">
+  <a class="button button-clear" href="#/app/home">返回</a>
+<h1 class="title" ><time-left limit="10"/></h1>
+  <button class="button button-clear" on-touch="submitExam()" ng-disabled="showAnswer">交卷</button>
+</ion-header-bar>
+
+  <!--<ion-content >-->
+    <ion-slides options="options" slider="data.slider">
+      <ion-slide-page ng-repeat="question in questions" style="background: #fff">
+        <ion-content scroll="true" style="margin-bottom:34px!important">
+          <h3 class="padding"><strong>{{$index+1}}.{{question.question}}:</strong><span>({{question.type=='radio'?"单选":"多选"}})</span>
+          </h3>
+          <seciton ng-if="question.type!=='radio'">
+
+            <ul class="list">
+              <li class="item item-checkbox" ng-repeat="answer in question.answer"><label class="checkbox"><input
+                type="checkbox" ng-model='h' name="h"
+                ng-change="workChecked(question._id,$index)"
+                ng-checked="myanswer[question._id].has($index)"></label>
+                {{answer.num}}.{{answer.text}}
+            </ul>
+            <div class="list card" ng-if="showAnswer">
+              <div class="item item-body">
+                <p>参考答案:{{question.rightA}}</p>
+                <p> {{question.summary}}</p>
+              </div>
+            </div>
+          </seciton>
+          <section ng-if="question.type=='radio'">
+
+            <ul class="list">
+              <li class="item item-checkbox" ng-repeat="answer in question.answer"><label class="checkbox"><input
+                type="radio"
+                ng-model='myanswer[question._id]'
+                ng-checked="myanswer[question._id].has($index)"
+                ng-value="$index"></label>
+                {{answer.num}}.{{answer.text}}
+              </li>
+            </ul>
+            <div class="list card" ng-if="showAnswer">
+              <div class="item item-body">
+                <p>参考答案:{{question.rightA}}</p>
+                <p> {{question.summary}}</p>
+              </div>
+            </div>
+          </section>
+        </ion-content>
+      </ion-slide-page>
+      <ion-slide-page style="background: #fff">
+        <ion-content scroll="true" style="margin-bottom:34px!important">
+          <h4 class=" padding">答题情况:</h4>
+          <section sytle="padding-bottom:40px;">
+            <ul class="list">
+            <div  ng-repeat="question in questions">
+              <li class="item item-checkbox" ng-if="question.type=='radio'">
+                <button class="button-bar" on-touch="slider.slideTo($index)">
+
+                  第{{$index+1}}题:<span class="padding-left " ng-class="{assertive:myanswer[question._id]==undefined}">{{myanswer[question._id]!==undefined?'已答':'未答题'}}
+                <i ng-if="showAnswer">-{{question.score}}</i>
+                </span>
+                </button>
+
+              </li>
+              <li class="item item-checkbox" ng-if="question.type!=='radio'">
+                <button class="button-bar" on-touch="slider.slideTo($index)">
+
+                  第{{$index+1}}题:<span class="padding-left " ng-class="{assertive:myanswer[question._id].size==0}">{{myanswer[question._id].size!==0?'已答':'未答题'}}
+                  <i ng-if="showAnswer">-{{question.score}}</i>
+                </span>
+                </button>
+              </li>
+            </div>
+            </ul>
+          </section >
+
+        </ion-content>
+      </ion-slide-page>
+    </ion-slides>
+  <!--</ion-content>-->
+  <div class="bar bar-footer">
+    <button class="button  button-positive" on-touch="slider.slidePrev()" ng-disabled="!slider.activeIndex ||(slider.activeIndex==questions.length)">
+      上一题
+    </button>
+    <button class="button  button-positive " on-touch="slider.slideTo(questions.length)" style="margin-left:50%;transform:translateX(-86px)" ng-disabled="(slider.activeIndex==questions.length)">
+      答题卡
+    </button>
+
+    <button class="button  button-positive" on-touch="slider.slideNext()" ng-disabled="(slider.activeIndex==questions.length)">
+     下一题</button>
+
+
+  </div>
+
+

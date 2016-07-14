@@ -1,0 +1,49 @@
+<ion-header-bar class="bar-stable">
+  <a class="button button-clear" href="#/app/home">返回</a>
+
+</ion-header-bar>
+
+<!--<ion-content >-->
+<ion-slides options="options" slider="data.slider">
+  <ion-slide-page ng-repeat="question in questions track by $index" style="background: #fff">
+    <ion-content scroll="true" style="margin-bottom:34px!important">
+      <h3 class="padding"><strong>{{$index+1}}.{{question.question}}:</strong>
+      </h3>
+      <section>
+
+        <ul class="list">
+          <li class="item" ng-repeat="answer in question.answer track by $index">
+            <!--{{$index>0?($index>1?($index>2?'D':'C'):'B'):'A'}}.{{answer}}-->
+            {{answer.num}}.{{answer.text}}
+          <!--只支持四个选项,需扩充-->
+        </ul>
+        <div class="card">
+
+          <div class="item item-text-wrap">
+            <h3>参考答案:{{question.rightA}}</h3>
+            {{question.summary}}
+          </div>
+        </div>
+      </section>
+
+    </ion-content>
+  </ion-slide-page>
+
+</ion-slides>
+<!--</ion-content>-->
+<div class="bar bar-footer">
+  <button class="button  button-positive" on-touch="slider.slidePrev()"
+          ng-disabled="!slider.activeIndex ||(slider.activeIndex==questions.length)">
+    上一题
+  </button>
+
+
+  <button class="button  button-positive" on-touch="slider.slideNext()"
+          ng-disabled="(slider.activeIndex==questions.length)">
+    下一题
+  </button>
+
+
+</div>
+
+

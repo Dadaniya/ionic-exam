@@ -1,0 +1,12 @@
+<div class="card" >
+  <div class="item  item-divider" ng-click='toggle()'>
+    <h2>
+
+      <i class="ion-plus-circled padding-right" ng-show='!msg.showMe'></i><i class="ion-minus-circled padding-right" ng-show='msg.showMe'></i>{{expander}}
+      <!--<span class='pull-right margin-right-20 badge'>{{msg.num}}</span>-->
+    </h2>
+
+  </div>
+  <div class="item item-text-wrap" ng-show='msg.showMe' ng-transclude>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+{
+  "data":[{
+    "name":"chart1",
+    "all":"150",
+    "done":"114",
+    "score":"20%"
+  },{
+    "name":"chart2",
+    "all":"150",
+    "done":"114",
+    "score":"20%"
+  },{
+    "name":"chart3",
+    "all":"150",
+    "done":"114",
+    "score":"20%"
+  }]
+}
